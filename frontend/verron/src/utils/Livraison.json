@@ -1,0 +1,293 @@
+[
+    {
+        "id": "1",
+        "prixLivraisonDomicile": 1200,
+        "prixLivraisonBureau": 800
+    },
+    {
+        "id": "2",
+        "prixLivraisonDomicile": 900,
+        "prixLivraisonBureau": 600
+    },
+    {
+        "id": "3",
+        "prixLivraisonDomicile": 1000,
+        "prixLivraisonBureau": 700
+    },
+    {
+        "id": "4",
+        "prixLivraisonDomicile": 950,
+        "prixLivraisonBureau": 650
+    },
+    {
+        "id": "5",
+        "prixLivraisonDomicile": 950,
+        "prixLivraisonBureau": 650
+    },
+    {
+        "id": "6",
+        "prixLivraisonDomicile": 900,
+        "prixLivraisonBureau": 600
+    },
+    {
+        "id": "7",
+        "prixLivraisonDomicile": 1000,
+        "prixLivraisonBureau": 700
+    },
+    {
+        "id": "8",
+        "prixLivraisonDomicile": 1200,
+        "prixLivraisonBureau": 800
+    },
+    {
+        "id": "9",
+        "prixLivraisonDomicile": 800,
+        "prixLivraisonBureau": 500
+    },
+    {
+        "id": "10",
+        "prixLivraisonDomicile": 850,
+        "prixLivraisonBureau": 550
+    },
+    {
+        "id": "11",
+        "prixLivraisonDomicile": 1500,
+        "prixLivraisonBureau": 1000
+    },
+    {
+        "id": "12",
+        "prixLivraisonDomicile": 1000,
+        "prixLivraisonBureau": 700
+    },
+    {
+        "id": "13",
+        "prixLivraisonDomicile": 900,
+        "prixLivraisonBureau": 600
+    },
+    {
+        "id": "14",
+        "prixLivraisonDomicile": 950,
+        "prixLivraisonBureau": 650
+    },
+    {
+        "prixLivraisonDomicile": 850,
+        "prixLivraisonBureau": 550
+    },
+    {
+        "id": "16",
+        "prixLivraisonDomicile": 700,
+        "prixLivraisonBureau": 400
+    },
+    {
+        "id": "17",
+        "prixLivraisonDomicile": 1000,
+        "prixLivraisonBureau": 700
+    },
+    {
+        "id": "18",
+        "prixLivraisonDomicile": 900,
+        "prixLivraisonBureau": 600
+    },
+    {
+        "id": "19",
+        "prixLivraisonDomicile": 900,
+        "prixLivraisonBureau": 600
+    },
+    {
+        "id": "20",
+        "prixLivraisonDomicile": 950,
+        "prixLivraisonBureau": 650
+    },
+    {
+        "id": "21",
+        "prixLivraisonDomicile": 900,
+        "prixLivraisonBureau": 600
+    },
+    {
+        "id": "22",
+        "prixLivraisonDomicile": 950,
+        "prixLivraisonBureau": 650
+    },
+    {
+        "id": "23",
+        "prixLivraisonDomicile": 900,
+        "prixLivraisonBureau": 600
+    },
+    {
+        "id": "24",
+        "prixLivraisonDomicile": 950,
+        "prixLivraisonBureau": 650
+    },
+    {
+        "id": "25",
+        "prixLivraisonDomicile": 900,
+        "prixLivraisonBureau": 600
+    },
+    {
+        "id": "26",
+        "prixLivraisonDomicile": 850,
+        "prixLivraisonBureau": 550
+    },
+    {
+        "id": "27",
+        "prixLivraisonDomicile": 900,
+        "prixLivraisonBureau": 600
+    },
+    {
+        "id": "28",
+        "prixLivraisonDomicile": 950,
+        "prixLivraisonBureau": 650
+    },
+    {
+        "id": "29",
+        "prixLivraisonDomicile": 900,
+        "prixLivraisonBureau": 600
+    },
+    {
+        "id": "30",
+        "prixLivraisonDomicile": 1100,
+        "prixLivraisonBureau": 750
+    },
+    {
+        "id": "31",
+        "prixLivraisonDomicile": 800,
+        "prixLivraisonBureau": 500
+    },
+    {
+        "id": "32",
+        "prixLivraisonDomicile": 1000,
+        "prixLivraisonBureau": 700
+    },
+    {
+        "id": "33",
+        "prixLivraisonDomicile": 1500,
+        "prixLivraisonBureau": 1000
+    },
+    {
+        "id": "34",
+        "prixLivraisonDomicile": 950,
+        "prixLivraisonBureau": 650
+    },
+    {
+        "id": "35",
+        "prixLivraisonDomicile": 850,
+        "prixLivraisonBureau": 550
+    },
+    {
+        "id": "36",
+        "prixLivraisonDomicile": 900,
+        "prixLivraisonBureau": 600
+    },
+    {
+        "id": "37",
+        "prixLivraisonDomicile": 1500,
+        "prixLivraisonBureau": 1000
+    },
+    {
+        "id": "38",
+        "prixLivraisonDomicile": 950,
+        "prixLivraisonBureau": 650
+    },
+    {
+        "id": "39",
+        "prixLivraisonDomicile": 1100,
+        "prixLivraisonBureau": 750
+    },
+    {
+        "id": "40",
+        "prixLivraisonDomicile": 1000,
+        "prixLivraisonBureau": 700
+    },
+    {
+        "id": "41",
+        "prixLivraisonDomicile": 950,
+        "prixLivraisonBureau": 650
+    },
+    {
+        "id": "42",
+        "prixLivraisonDomicile": 850,
+        "prixLivraisonBureau": 550
+    },
+    {
+        "id": "43",
+        "prixLivraisonDomicile": 900,
+        "prixLivraisonBureau": 600
+    },
+    {
+        "id": "44",
+        "nom": "Aïn Defla",
+        "nomAr": "عين الدفلى",
+        "prixLivraisonDomicile": 850,
+        "prixLivraisonBureau": 550
+    },
+    {
+        "id": "45",
+        "prixLivraisonDomicile": 1000,
+        "prixLivraisonBureau": 700
+    },
+    {
+        "id": "46",
+        "prixLivraisonDomicile": 900,
+        "prixLivraisonBureau": 600
+    },
+    {
+        "id": "47",
+        "prixLivraisonDomicile": 1200,
+        "prixLivraisonBureau": 800
+    },
+    {
+        "id": "48",
+        "prixLivraisonDomicile": 900,
+        "prixLivraisonBureau": 600
+    },
+    {
+        "id": "49",
+        "prixLivraisonDomicile": 1300,
+        "prixLivraisonBureau": 900
+    },
+    {
+        "id": "50",
+        "prixLivraisonDomicile": 1400,
+        "prixLivraisonBureau": 950
+    },
+    {
+        "id": "51",
+        "prixLivraisonDomicile": 1100,
+        "prixLivraisonBureau": 750
+    },
+    {
+        "id": "52",
+        "prixLivraisonDomicile": 1300,
+        "prixLivraisonBureau": 900
+    },
+    {
+        "id": "53",
+        "prixLivraisonDomicile": 1400,
+        "prixLivraisonBureau": 950
+    },
+    {
+        "id": "54",
+        "prixLivraisonDomicile": 1500,
+        "prixLivraisonBureau": 1000
+    },
+    {
+        "id": "55",
+        "prixLivraisonDomicile": 1100,
+        "prixLivraisonBureau": 750
+    },
+    {
+        "id": "56",
+        "prixLivraisonDomicile": 1500,
+        "prixLivraisonBureau": 1000
+    },
+    {
+        "id": "57",
+        "prixLivraisonDomicile": 1200,
+        "prixLivraisonBureau": 800
+    },
+    {
+        "id": "58",
+        "prixLivraisonDomicile": 1300,
+        "prixLivraisonBureau": 900
+    }
+]

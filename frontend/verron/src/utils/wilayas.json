@@ -1,0 +1,292 @@
+[
+    {
+        "id": "1",
+        "nom": "Adrar",
+        "nomAr": "أدرار"
+    },
+    {
+        "id": "2",
+        "nom": "Chlef",
+        "nomAr": "الشلف"
+    },
+    {
+        "id": "3",
+        "nom": "Laghouat",
+        "nomAr": "الأغواط"
+    },
+    {
+        "id": "4",
+        "nom": "Oum Bouaghi",
+        "nomAr": "أم البواقي"
+    },
+    {
+        "id": "5",
+        "nom": "Batna",
+        "nomAr": "باتنة"
+    },
+    {
+        "id": "6",
+        "nom": "Béjaia",
+        "nomAr": "بجاية"
+    },
+    {
+        "id": "7",
+        "nom": "Biskra",
+        "nomAr": "بسكرة"
+    },
+    {
+        "id": "8",
+        "nom": "Bechar",
+        "nomAr": "بشار"
+    },
+    {
+        "id": "9",
+        "nom": "Blida",
+        "nomAr": "البليدة"
+    },
+    {
+        "id": "10",
+        "nom": "Bouira",
+        "nomAr": "البويرة"
+    },
+    {
+        "id": "11",
+        "nom": "Tamanrasset",
+        "nomAr": "تمنراست"
+    },
+    {
+        "id": "12",
+        "nom": "Tebessa",
+        "nomAr": "تبسة"
+    },
+    {
+        "id": "13",
+        "nom": "Tlemcen",
+        "nomAr": "تلمسان"
+    },
+    {
+        "id": "14",
+        "nom": "Tiaret",
+        "nomAr": "تيارت"
+    },
+    {
+        "id": "15",
+        "nom": "Tizi ouzou",
+        "nomAr": "تيزي وزو"
+    },
+    {
+        "id": "16",
+        "nom": "Alger",
+        "nomAr": "الجزائر العاصمة"
+    },
+    {
+        "id": "17",
+        "nom": "Djelfa",
+        "nomAr": "الجلفة"
+    },
+    {
+        "id": "18",
+        "nom": "Jijel",
+        "nomAr": "جيجل"
+    },
+    {
+        "id": "19",
+        "nom": "Sétif",
+        "nomAr": "سطيف"
+    },
+    {
+        "id": "20",
+        "nom": "Saida",
+        "nomAr": "سعيدة"
+    },
+    {
+        "id": "21",
+        "nom": "Skikda",
+        "nomAr": "سكيكدة"
+    },
+    {
+        "id": "22",
+        "nom": "Sidi Bel Abbès",
+        "nomAr": "سيدي بلعباس"
+    },
+    {
+        "id": "23",
+        "nom": "Annaba",
+        "nomAr": "عنابة"
+    },
+    {
+        "id": "24",
+        "nom": "Guelma",
+        "nomAr": "قالمة"
+    },
+    {
+        "id": "25",
+        "nom": "Constantine",
+        "nomAr": "قسنطينة"
+    },
+    {
+        "id": "26",
+        "nom": "Médéa",
+        "nomAr": "المدية"
+    },
+    {
+        "id": "27",
+        "nom": "Mostaganem",
+        "nomAr": "مستغانم"
+    },
+    {
+        "id": "28",
+        "nom": "M'sila",
+        "nomAr": "المسيلة"
+    },
+    {
+        "id": "29",
+        "nom": "Mascara",
+        "nomAr": "معسكر"
+    },
+    {
+        "id": "30",
+        "nom": "Ouargla",
+        "nomAr": "ورقلة"
+    },
+    {
+        "id": "31",
+        "nom": "Oran",
+        "nomAr": "وهران"
+    },
+    {
+        "id": "32",
+        "nom": "El Baydh",
+        "nomAr": "البيض"
+    },
+    {
+        "id": "33",
+        "nom": "Illizi",
+        "nomAr": "إليزي"
+    },
+    {
+        "id": "34",
+        "nom": "Bordj Bou Arreridj",
+        "nomAr": "برج بوعريريج"
+    },
+    {
+        "id": "35",
+        "nom": "Boumerdès",
+        "nomAr": "بومرداس"
+    },
+    {
+        "id": "36",
+        "nom": "El Taref",
+        "nomAr": "الطارف"
+    },
+    {
+        "id": "37",
+        "nom": "Tindouf",
+        "nomAr": "تندوف"
+    },
+    {
+        "id": "38",
+        "nom": "Tissemsilt",
+        "nomAr": "تيسمسيلت"
+    },
+    {
+        "id": "39",
+        "nom": "El Oued",
+        "nomAr": "الوادي"
+    },
+    {
+        "id": "40",
+        "nom": "Khenchla",
+        "nomAr": "خنشلة"
+    },
+    {
+        "id": "41",
+        "nom": "Souk Ahras",
+        "nomAr": "سوق أهراس"
+    },
+    {
+        "id": "42",
+        "nom": "Tipaza",
+        "nomAr": "تيبازة"
+    },
+    {
+        "id": "43",
+        "nom": "Mila",
+        "nomAr": " ميلة"
+    },
+    {
+        "id": "44",
+        "nom": "Aïn Defla",
+        "nomAr": "عين الدفلى"
+    },
+    {
+        "id": "45",
+        "nom": "Nâama",
+        "nomAr": "النعامة"
+    },
+    {
+        "id": "46",
+        "nom": "Aïn Temouchent",
+        "nomAr": "عين تموشنت"
+    },
+    {
+        "id": "47",
+        "nom": "Ghardïa",
+        "nomAr": "غرداية"
+    },
+    {
+        "id": "48",
+        "nom": "Relizane",
+        "nomAr": "غليزان"
+    },
+    {
+        "id": "49",
+        "nom": "Timimoun",
+        "nomAr": "تيميمون"
+    },
+    {
+        "id": "50",
+        "nom": "Bordj Badji Mokhtar",
+        "nomAr": "برج باجي مختار"
+    },
+    {
+        "id": "51",
+        "nom": "Ouled Djellal",
+        "nomAr": "أولاد جلال"
+    },
+    {
+        "id": "52",
+        "nom": "Béni Abbès",
+        "nomAr": "بني عباس"
+    },
+    {
+        "id": "53",
+        "nom": "In Salah",
+        "nomAr": "عين صالح"
+    },
+    {
+        "id": "54",
+        "nom": "In Guezzam ",
+        "nomAr": "عين قزام"
+    },
+    {
+        "id": "55",
+        "nom": "Touggourt",
+        "nomAr": "تقرت"
+    },
+    {
+        "id": "56",
+        "nom": "Djanet",
+        "nomAr": "جانت"
+    },
+    {
+        "id": "57",
+        "nom": "El M'Ghair ",
+        "nomAr": "المغير"
+    },
+    {
+        "id": "58",
+        "nom": "El Meniaa",
+        "nomAr": "المنيعة"
+    }
+]
