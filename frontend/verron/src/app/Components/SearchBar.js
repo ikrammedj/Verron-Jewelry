@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { CiSearch } from "react-icons/ci";
-import { FaTimes } from "react-icons/fa";
 
-export default function SearchBarWithFilter({ setBijoux, onClose }) {
+export default function SearchBarWithFilter({ setBijoux, showSearchBar }) { // Retirez onClose des props
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Tous");
 
@@ -16,7 +15,7 @@ export default function SearchBarWithFilter({ setBijoux, onClose }) {
 
       const url = category === "Tous"
         ? "http://127.0.0.1:5000/bijoux"
-        : `http://127.0.0.1:5000/bijoux/${apiCategory}`; // Updated to use apiCategory
+        : `http://127.0.0.1:5000/bijoux/categorie/${apiCategory}`;
       setBijoux(url);
     } catch (error) {
       console.error("Erreur lors de la récupération des bijoux par catégorie:", error);
@@ -25,7 +24,7 @@ export default function SearchBarWithFilter({ setBijoux, onClose }) {
 
   const fetchBijouxBySearch = async () => {
     try {
-      const url = `http://127.0.0.1:5000/rechercher?mot=${encodeURIComponent(searchTerm)}`;
+      const url = `http://127.0.0.1:5000/bijoux/rechercher?mot=${encodeURIComponent(searchTerm)}`;
       setBijoux(url);
     } catch (error) {
       console.error("Erreur lors de la recherche de bijoux:", error);
@@ -54,36 +53,32 @@ export default function SearchBarWithFilter({ setBijoux, onClose }) {
 
   return (
     <div className="flex flex-col items-center p-6 w-full bg-[#F7F1EB]">
-      {onClose && (
-        <button 
-          onClick={onClose}
-          className="absolute top-4 left-4 text-gray-500 hover:text-[#5D4E4E] transition-colors"
-          aria-label="Fermer la recherche"
-        >
-          <FaTimes className="text-xl" />
-        </button>
+      {/* Barre de recherche (conditionnelle) */}
+      {showSearchBar && (
+        <div className="w-full max-w-lg relative mb-4">
+          <div className="relative flex items-center">
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={handleKeyPress}  
+              placeholder="Rechercher..."
+              className="w-full px-5 py-4 text-lg border border-gray-300 rounded-full focus:border-[#9E6F6F] outline-none transition-all duration-200"
+            />
+            <button 
+              onClick={handleSearch} 
+              className="flex items-center justify-center h-14 w-14 absolute right-1 bg-[#9E6F6F] text-white rounded-full hover:bg-[#8a5d5d] transition-colors"
+              aria-label="Rechercher"
+            >
+              <CiSearch className="text-2xl" />
+            </button>
+          </div>
+        </div>
       )}
       
+      {/* Filtres par catégorie (toujours visibles) */}
       <div className="w-full max-w-lg">
-        <div className="relative flex items-center mb-4">
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyDown={handleKeyPress}  
-            placeholder="Rechercher..."
-            className="w-full px-5 py-4 text-lg border border-gray-300 rounded-full focus:border-[#9E6F6F] outline-none transition-all duration-200"
-          />
-          <button 
-            onClick={handleSearch} 
-            className="flex items-center justify-center h-14 w-14 absolute right-1 bg-[#9E6F6F] text-white rounded-full hover:bg-[#8a5d5d] transition-colors"
-            aria-label="Rechercher"
-          >
-            <CiSearch className="text-2xl" />
-          </button>
-        </div>
-        
-        <div className="flex flex-wrap justify-center gap-3 mb-3">
+        <div className="flex flex-wrap justify-center gap-3">
           {categories.map((category) => (
             <button
               key={category}

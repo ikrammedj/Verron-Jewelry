@@ -2,6 +2,8 @@ from flask import Blueprint, Response, request
 from lxml import etree
 from ..utils.xml_utils import get_xml_from_db, convert_bijoux_to_xml
 from ..utils.db_utils import get_db_connection
+from unidecode import unidecode
+from urllib.parse import quote_plus
 
 bijoux_bp = Blueprint('bijoux', __name__, url_prefix='/bijoux')
 
@@ -147,13 +149,6 @@ def rechercher_bijoux():
 
     xml_response = convert_bijoux_to_xml(bijoux)
     return Response(xml_response, mimetype='application/xml')
-
-
-
-from urllib.parse import quote_plus
-from lxml import etree
-from flask import request, Response
-from unidecode import unidecode
 
 
 @bijoux_bp.route('/nom/<nom>', methods=['GET'])
