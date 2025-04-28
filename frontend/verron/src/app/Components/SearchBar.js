@@ -1,48 +1,51 @@
 import { useState, useEffect } from "react";
 import { CiSearch } from "react-icons/ci";
 
-export default function SearchBarWithFilter({ setBijoux, showSearchBar }) { // Retirez onClose des props
+export default function SearchBarWithFilter({ setBijoux, showSearchBar }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Tous");
+  const [sortOrder, setSortOrder] = useState("asc"); // Nouvel état pour le tri
 
   const categories = ["Tous", "Bagues", "Boucles d'oreilles"];
 
-  const fetchBijouxByCategory = async (category) => {
-    try {
-      const apiCategory = category === "Boucles d'oreilles" 
-        ? "boucles_oreilles" 
-        : category.toLowerCase();
+  const buildApiUrl = (category, search, sort) => {
+    // Gestion des catégories spéciales (boucles d'oreilles)
+    const apiCategory = category === "Boucles d'oreilles" 
+      ? "boucles_oreilles" 
+      : category.toLowerCase();
 
-      const url = category === "Tous"
-        ? "http://127.0.0.1:5000/bijoux"
-        : `http://127.0.0.1:5000/bijoux/categorie/${apiCategory}`;
-      setBijoux(url);
-    } catch (error) {
-      console.error("Erreur lors de la récupération des bijoux par catégorie:", error);
-    }
-  };
-
-  const fetchBijouxBySearch = async () => {
-    try {
-      const url = `http://127.0.0.1:5000/bijoux/rechercher?mot=${encodeURIComponent(searchTerm)}`;
-      setBijoux(url);
-    } catch (error) {
-      console.error("Erreur lors de la recherche de bijoux:", error);
-    }
-  };
-
-  useEffect(() => {
-    if (searchTerm === "") { 
-      fetchBijouxByCategory(selectedCategory);
-    }
-  }, [selectedCategory]);
-
-  const handleSearch = () => {
-    if (searchTerm.trim() !== "") {
-      fetchBijouxBySearch();
+    let baseUrl;
+    if (category === "Tous") {
+      baseUrl = "http://127.0.0.1:5000/bijoux";
     } else {
-      fetchBijouxByCategory(selectedCategory);
+      baseUrl = `http://127.0.0.1:5000/bijoux/categorie/${apiCategory}`;
     }
+
+    // Construction des paramètres
+    const params = new URLSearchParams();
+    if (search.trim() !== "") params.append("search", search);
+    if (sort) params.append("sort", sort);
+
+    return params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl;
+  };
+
+  const fetchBijoux = async () => {
+    try {
+      const url = buildApiUrl(selectedCategory, searchTerm, sortOrder);
+      setBijoux(url);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des bijoux:", error);
+    }
+  };
+
+  // Appel automatique quand la catégorie ou le tri change
+  useEffect(() => {
+    fetchBijoux();
+  }, [selectedCategory, sortOrder]);
+
+  // Gestion de la recherche
+  const handleSearch = () => {
+    fetchBijoux();
   };
 
   const handleKeyPress = (e) => {
@@ -76,8 +79,9 @@ export default function SearchBarWithFilter({ setBijoux, showSearchBar }) { // R
         </div>
       )}
       
-      {/* Filtres par catégorie (toujours visibles) */}
-      <div className="w-full max-w-lg">
+      {/* Filtres par catégorie et tri */}
+      <div className="w-full max-w-lg space-y-4">
+        {/* Filtres par catégorie */}
         <div className="flex flex-wrap justify-center gap-3">
           {categories.map((category) => (
             <button
@@ -95,6 +99,22 @@ export default function SearchBarWithFilter({ setBijoux, showSearchBar }) { // R
               {category.replace('_', ' ')}
             </button>
           ))}
+        </div>
+        
+        {/* Sélecteur de tri */}
+        <div className="flex justify-center items-center gap-2">
+          <label htmlFor="sort" className="text-[#5D4E4E] text-sm">
+            Trier par prix:
+          </label>
+          <select
+            id="sort"
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value)}
+            className="px-3 py-1 text-sm border border-[#9E6F6F] rounded-full bg-white focus:outline-none focus:ring-1 focus:ring-[#9E6F6F]"
+          >
+            <option value="asc">Croissant</option>
+            <option value="desc">Décroissant</option>
+          </select>
         </div>
       </div>
     </div>
