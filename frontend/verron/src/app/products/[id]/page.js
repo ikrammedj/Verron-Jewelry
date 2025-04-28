@@ -51,19 +51,16 @@ export default function ProductPage() {
       // Récupérer les prix de livraison pour la wilaya sélectionnée
       const livraison = Livraison.find((liv) => liv.id === value);
       SetPrixLivraison(livraison || { prixLivraisonDomicile: 0, prixLivraisonBureau: 0 });
-      calculateFinalPrice();
     } else if (name === "typeLivraison") {
       setFormData({
         ...formData,
         typeLivraison: value,
       });
-      calculateFinalPrice();
     } else {
       setFormData({
         ...formData,
         [name]: value,
       });
-      calculateFinalPrice();
     }
 };
 
@@ -132,7 +129,7 @@ export default function ProductPage() {
       `;
   
       // 2. Envoyer la requête avec le bon Content-Type
-      const response = await fetch('http://127.0.0.1:5000/orders', {
+      const response = await fetch('http://127.0.0.1:5000/orders/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/xml', // Important!
@@ -178,7 +175,7 @@ export default function ProductPage() {
 
       try {
         // 1. Charger le XML
-        const xmlResponse = await fetch(`http://127.0.0.1:5000/bijou/${id}`);
+        const xmlResponse = await fetch(`http://127.0.0.1:5000/bijoux/nom/${id}`);
         if (!xmlResponse.ok) {
           throw new Error(`Erreur HTTP XML: ${xmlResponse.status}`);
         }

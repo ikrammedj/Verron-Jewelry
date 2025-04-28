@@ -7,13 +7,14 @@ import SearchBarWithFilter from "../Components/SearchBar";
 
 export default function BijouxCatalogueHTML() {
   const [bijoux, setBijoux] = useState([]);
-  const [url, setUrl] = useState("http://127.0.0.1:5000/bijoux");
+  const [url, setUrl] = useState("http://localhost:5000/bijoux");
   const [showSearchBar, setShowSearchBar] = useState(false);
 
   useEffect(() => {
     async function applyXSLT() {
       try {
         const xmlResponse = await fetch(url);
+        console.log(xmlResponse);
         const xmlText = await xmlResponse.text();
         const xmlDoc = new DOMParser().parseFromString(xmlText, "application/xml");
 
