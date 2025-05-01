@@ -17,8 +17,7 @@
         </style>
       </head>
       <body>
-        <h1>Catalogue de Bijoux</h1>
-
+       
         <div class="section">
           <h2>Bagues</h2>
           <xsl:for-each select="bijoux/categorie/bagues/bague">

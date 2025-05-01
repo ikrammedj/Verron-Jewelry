@@ -63,31 +63,9 @@
     </bijoux>
     <orders>
         <order>
-            <name>Hamchaoui Badreddine</name>
-            <address>123 Main St, Paris, France</address>
-            <items>
-                <item>
-                    <name>Gouttes d’Or</name>
-                    <price>200.00</price>
-                    <quantity>1</quantity>
-                </item>
-            </items>
-        </order>
-        <order>
-            <name>Medjahed Ikram</name>
-            <address>456 Elm St, Lyon, France</address>
-            <items>
-                <item>
-                    <name> Ensemble Soléa</name>
-                    <price>1000.00</price>
-                    <quantity>1</quantity>
-                </item>
-            </items>
-        </order>
-        <order>
             <id>1</id>
-            <nom>ikram</nom>
-            <prenom>medjahed </prenom>
+            <nom>Medjahed</nom>
+            <prenom>Ikram</prenom>
             <telephone>0659125801</telephone>
             <wilaya>Adrar</wilaya>
             <commune>Timekten</commune>
@@ -103,8 +81,8 @@
         </order>
         <order>
             <id>2</id>
-            <nom>ikram</nom>
-            <prenom>med </prenom>
+            <nom>Hamchaoui</nom>
+            <prenom>Badreddine</prenom>
             <telephone>0659125801</telephone>
             <wilaya>Chlef</wilaya>
             <commune>Talassa</commune>

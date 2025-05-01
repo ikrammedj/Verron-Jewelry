@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { CiSearch } from "react-icons/ci";
+import { FaChevronDown } from "react-icons/fa";
 
 export default function SearchBarWithFilter({ setBijoux, showSearchBar }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Tous");
-  const [sortOrder, setSortOrder] = useState("asc"); // Nouvel état pour le tri
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [showSortOptions, setShowSortOptions] = useState(false);
 
   const categories = ["Tous", "Bagues", "Boucles d'oreilles"];
 
   const buildApiUrl = (category, search, sort) => {
-    // Gestion des catégories spéciales (boucles d'oreilles)
     const apiCategory = category === "Boucles d'oreilles" 
       ? "boucles_oreilles" 
       : category.toLowerCase();
@@ -21,7 +22,6 @@ export default function SearchBarWithFilter({ setBijoux, showSearchBar }) {
       baseUrl = `http://127.0.0.1:5000/bijoux/categorie/${apiCategory}`;
     }
 
-    // Construction des paramètres
     const params = new URLSearchParams();
     if (search.trim() !== "") params.append("search", search);
     if (sort) params.append("sort", sort);
@@ -38,12 +38,10 @@ export default function SearchBarWithFilter({ setBijoux, showSearchBar }) {
     }
   };
 
-  // Appel automatique quand la catégorie ou le tri change
   useEffect(() => {
     fetchBijoux();
   }, [selectedCategory, sortOrder]);
 
-  // Gestion de la recherche
   const handleSearch = () => {
     fetchBijoux();
   };
@@ -54,9 +52,13 @@ export default function SearchBarWithFilter({ setBijoux, showSearchBar }) {
     }
   };
 
+  const handleSortOptionClick = (order) => {
+    setSortOrder(order);
+    setShowSortOptions(false);
+  };
+
   return (
     <div className="flex flex-col items-center p-6 w-full bg-[#F7F1EB]">
-      {/* Barre de recherche (conditionnelle) */}
       {showSearchBar && (
         <div className="w-full max-w-lg relative mb-4">
           <div className="relative flex items-center">
@@ -78,11 +80,11 @@ export default function SearchBarWithFilter({ setBijoux, showSearchBar }) {
           </div>
         </div>
       )}
-      
-      {/* Filtres par catégorie et tri */}
+
+      {/* Align filters and sort options on the same line */}
       <div className="w-full max-w-lg space-y-4">
-        {/* Filtres par catégorie */}
-        <div className="flex flex-wrap justify-center gap-3">
+        <div className="flex items-center justify-start gap-3 mb-4">
+          {/* Category filters */}
           {categories.map((category) => (
             <button
               key={category}
@@ -99,22 +101,38 @@ export default function SearchBarWithFilter({ setBijoux, showSearchBar }) {
               {category.replace('_', ' ')}
             </button>
           ))}
-        </div>
-        
-        {/* Sélecteur de tri */}
-        <div className="flex justify-center items-center gap-2">
-          <label htmlFor="sort" className="text-[#5D4E4E] text-sm">
-            Trier par prix:
-          </label>
-          <select
-            id="sort"
-            value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value)}
-            className="px-3 py-1 text-sm border border-[#9E6F6F] rounded-full bg-white focus:outline-none focus:ring-1 focus:ring-[#9E6F6F]"
-          >
-            <option value="asc">Croissant</option>
-            <option value="desc">Décroissant</option>
-          </select>
+
+          {/* Sort button */}
+          <div className="relative">
+            <button
+              onClick={() => setShowSortOptions(!showSortOptions)}
+              className="flex items-center gap-2 px-4 py-2 text-sm rounded-full bg-[#e4d2d2] text-[#5D4E4E] hover:bg-[#c4afaf] transition-colors"
+            >
+              <span>Tri par  </span>
+              <FaChevronDown className={`transition-transform ${showSortOptions ? 'rotate-180' : ''}`} />
+            </button>
+            
+            {showSortOptions && (
+              <div className="absolute z-10 mt-2 w-full bg-white rounded-lg shadow-lg overflow-hidden">
+                <button
+                  onClick={() => handleSortOptionClick("asc")}
+                  className={`block w-full px-4 py-2 text-sm text-left ${
+                    sortOrder === "asc" ? 'bg-[#9E6F6F] text-white' : 'text-[#5D4E4E] hover:bg-[#f0e6e6]'
+                  }`}
+                >
+                  Prix Croissant
+                </button>
+                <button
+                  onClick={() => handleSortOptionClick("desc")}
+                  className={`block w-full px-4 py-2 text-sm text-left ${
+                    sortOrder === "desc" ? 'bg-[#9E6F6F] text-white' : 'text-[#5D4E4E] hover:bg-[#f0e6e6]'
+                  }`}
+                >
+                  Prix Décroissant
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

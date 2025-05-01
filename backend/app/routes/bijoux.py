@@ -112,45 +112,6 @@ def afficher_xml():
     xml_str = etree.tostring(root, encoding='unicode')
     return Response(xml_str, mimetype='application/xml')
 
-@bijoux_bp.route('/rechercher', methods=['GET'])
-def rechercher_bijoux():
-    mot = request.args.get('mot', '').strip().lower()
-    if not mot:
-        return Response("<message>Mot-clé requis</message>", status=400, mimetype='application/xml')
-
-    root = get_xml_from_db()
-    if root is None:
-        return Response("<message>Données XML introuvables</message>", status=500, mimetype='application/xml')
-
-    xpath_expr = f"""//categorie/*/*[
-        contains(translate(nom, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{mot}')
-        or contains(translate(description, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{mot}')
-    ]"""
-
-    bijoux_elements = root.xpath(xpath_expr)
-    
-    if not bijoux_elements:
-        return Response("<message>Aucun bijou trouvé</message>", status=404, mimetype='application/xml')
-
-    bijoux = []
-    for item in bijoux_elements:
-        bijou = {
-            "nom": item.xpath("string(nom)").strip(),
-            "prix": float(item.xpath("string(prix)") or '0'),
-            "description": item.xpath("string(description)").strip(),
-        }
-
-        # Ajouter image si présente
-        image = item.xpath("string(image)").strip()
-        if image:
-            bijou["image"] = f"/static/{image}"
-
-        bijoux.append(bijou)
-
-    xml_response = convert_bijoux_to_xml(bijoux)
-    return Response(xml_response, mimetype='application/xml')
-
-
 @bijoux_bp.route('/nom/<nom>', methods=['GET'])
 def get_bijou_par_nom(nom):
     root = get_xml_from_db()

@@ -22,15 +22,15 @@
           }
           .details {
             flex: 2;
+            color: #000000;
           }
           .price {
             font-size: 24px;
             font-weight: bold;
             margin-top: 10px;
+            color: #000000;
           }
-          .quantity {
-            margin: 20px 0;
-          }
+         
           .btn-buy {
             margin-top: 30px;
             padding: 10px;
