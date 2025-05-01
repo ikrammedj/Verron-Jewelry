@@ -98,4 +98,4 @@ def ajouter_order():
         return Response(f"<message>Erreur BD : {str(e)}</message>", status=500, mimetype='application/xml')
 
     xml_cache = root
-    return Response("<message>order ajoutée avec succès</message>", status=201, mimetype='application/xml')
+    return Response("<message>Commande ajoutée avec succès</message>", status=201, mimetype='application/xml')
