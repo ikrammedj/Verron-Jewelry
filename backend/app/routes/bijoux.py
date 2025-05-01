@@ -146,7 +146,6 @@ def get_bijou_par_nom(nom):
     # Convertir en XML
     xml_response = convert_bijoux_to_xml([bijou])
 
-    # Ajouter l'instruction de feuille de style XSL
     root_bijoux = etree.fromstring(xml_response)
     xslt_pi = etree.ProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="bijou.xslt"')
     root_bijoux.addprevious(xslt_pi)
