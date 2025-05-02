@@ -1,0 +1,130 @@
+\documentclass[14pt]{extarticle}
+\usepackage[margin=1in]{geometry} 
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{array,multirow,makecell}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{tocbibind}
+\usepackage{setspace}
+\usepackage{underscore}
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue]{hyperref}
+\usepackage[normalem]{ulem}
+\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+    \begin{tabular}{m{0.2\textwidth} m{0.6\textwidth} m{0.2\textwidth}}
+        \includegraphics[width=\linewidth]{umbb.png} &
+        \centering
+        { \small {Université M'Hamed Bougara de Boumerdès}}\\
+        { \small {Faculté des Sciences}}\\
+        { \small {Département d'Informatique}} &
+        \includegraphics[width=\linewidth]{FS.png}
+    \end{tabular}
+\end{center}
+
+
+    \vspace{4cm}
+
+  \begin{center}
+ 
+   \begin{spacing}{1.5}
+    {\Large \bfseries Application Web de Vente de Bijoux en Ligne basée sur XML}
+\end{spacing}
+
+
+        \vspace{1.5cm}
+  \end{center}
+     
+\vspace{5cm}
+        \textbf{Participants :}  
+        \begin{itemize}[label=-]
+            \item MEDJAHED Ikram
+            \item HAMCHAOUI Badreddine
+        \end{itemize}
+
+        \textbf{Groupe :} TI 03 \\
+\begin{center}
+    \vspace{1.5cm}
+        { CAWA (M1 - S2) – Année universitaire 2024/2025} \\
+\end{center}
+    \vfill
+\end{titlepage}
+
+\section*{Présentation Générale}
+\addcontentsline{toc}{section}{Présentation Générale}
+Ce projet web est une boutique en ligne de bijoux (bagues et boucles d’oreilles) mettant en avant l’usage de XML comme format central de données. L'application permet de naviguer, rechercher, filtrer et commander des bijoux
+
+\section*{Architecture du Projet}
+\subsubsection*{Modélisation des Données (XML + XSD)}
+\begin{itemize}[label=-]
+    \item Le fichier \texttt{bijoux.xml} contient une liste de bijoux structuré (catégories : bagues, boucles d’oreilles), et des commandes.
+    \item La structure est validée par le schéma \texttt{bijoux.xsd} qui impose des contraintes sur les types et les valeurs autorisées.
+\end{itemize}
+\subsubsection*{Base de Données PostgreSQL}
+\begin{itemize}[label=-]
+    \item Une table \texttt{table_xml} a été créée avec un champ de type XML contenant l'intégralité du fichier \texttt{bijoux.xml}
+    \item Des requêtes XPath sont utilisées via PostgreSQL pour extraire dynamiquement les bijoux selon certains critères (prix, catégorie…).
+\end{itemize}
+
+\subsubsection*{Transformation XSLT (XML → HTML)}
+\begin{itemize}[label=-]
+    \item Le fichier \texttt{bijoux.xslt} permet de transformer les données \textbf{XML} en une page \textbf{HTML} statique.
+    \item La transformation XSLT se fait côté client via JavaScript, à l’aide de \texttt{XSLTProcessor}.
+\end{itemize}
+
+\section*{Backend – API REST (Python + Flask)}
+L’API expose les endpoints suivants :
+\begin{itemize}[label=-]
+    \item \texttt{GET /bijoux}:retourne la liste complète des bijoux au format XML, avec possibilité de filtrer par mot-clé (search) et de trier les résultats (sort) via des paramètres optionnels.
+    \item \texttt{GET /bijoux/categorie/<categorie>}: filtre les bijoux par catégorie en utilisant XPath.
+    \item \texttt{GET /bijoux/<nom>}:  récupère les bijoux par nom.
+    \item \texttt{GET /xml }: renvoie le contenu brut du fichier XML contenant les données des bijoux.
+    \item \texttt{POST /order}: ajout d’une commande au format XML dans la base.
+\end{itemize}
+Toutes les interactions \textbf{REST} utilisent \textbf{XML} comme format de données en entrée/sortie, avec filtrage et recherche via \textbf{XPath}.
+\section*{Frontend – Interface Dynamique}
+Une interface dynamique permet de :
+\begin{itemize}[label=-]
+    \item La transformation XSLT se fait côté client via JavaScript, à l’aide de \texttt{bijoux.xslt} et \texttt{bijou.xslt}.
+    \item Filtrer les bijoux (par catégorie), effectuer des recherches et trier selon le prix, grâce à des appels à l’API \textbf{REST}.
+    \item Manipulation dynamique du \textbf{DOM} et requêtes \texttt{fetch}.
+\end{itemize}
+\section*{Choix techniques}
+\begin{itemize} [label =-]
+    \item \textbf{XML/XSD/XSLT} pour la structuration, la validation, et la transformation des données.
+    \item \textbf{Flask (Python)} pour la gestion des routes et des services \textbf{REST}.
+    \item \textbf{PostgreSQL} comme base de données, exploitant un champ XML natif.
+    \item \textbf{React + Next.js} pour le front-end dynamique, l’interaction DOM et la transformation XSLT.
+     \item \textbf{XPath} pour les recherches, le filtrage et la gestion des commandes.
+     \item \textbf{Tailwind CSS} pour le stylage rapide et réactif du front-end.
+     \item \textbf{Mise en cache} des requêtes XML pour améliorer les performances.
+\end{itemize}
+\section*{ Lien vers la vidéo explicative et le code source}
+\begin{itemize}[label= ]
+    \item\href{https://drive.google.com/file/d/1js70yp9zMGgbiwFzuWCpGEhvx22dAf4N/view?usp=share_link}{\uline{Lien vers la vidéo}}
+    \item \href{https://github.com/ikrammedj/Verron-Jewelry}{\uline{Lien vers le code}}
+
+    
+\end{itemize}
+
+
+
+
+
+
+
+
+
+    
+
+\end{document}
