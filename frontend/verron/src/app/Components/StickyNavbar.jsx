@@ -1,4 +1,3 @@
-// components/StickyNavbar.js
 'use client'
 
 import React, { useEffect, useState } from 'react';
@@ -20,7 +19,7 @@ export default function StickyNavbar() {
         }
       },
       {
-        rootMargin: "-50% 0px -50% 0px", // zone de détection centrale
+        rootMargin: "-50% 0px -50% 0px", 
         threshold: 0.1,
       }
     );

@@ -1,7 +1,6 @@
 import sys
 from os.path import abspath, dirname
 
-# Ajoute le chemin du projet au PYTHONPATH
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 from app import create_app

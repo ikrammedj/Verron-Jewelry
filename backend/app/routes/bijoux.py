@@ -38,10 +38,7 @@ def get_tous_les_bijoux():
     reverse = sort_order == 'desc'
     bijoux.sort(key=lambda x: x["prix"], reverse=reverse)
 
-    # Convertir en XML
     root_bijoux = etree.fromstring(convert_bijoux_to_xml(bijoux))
-
-    # Ajouter l'instruction de feuille de style XSL
     xslt_pi = etree.ProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="bijoux.xsl"')
     root_bijoux.addprevious(xslt_pi)
 
@@ -53,18 +50,13 @@ def get_tous_les_bijoux():
 @bijoux_bp.route('/categorie/<categorie>', methods=['GET'])
 def get_bijoux_par_categorie(categorie):
     try:
-        print("Route appelée avec catégorie :", categorie)
-        
         root = get_xml_from_db()
-        print("XML root chargé :", root.tag)
-
         if root is None:
             return Response("<message>Données XML introuvables</message>", status=500, mimetype='application/xml')
 
         sort_order = request.args.get('sort', 'asc')
         keyword = request.args.get('search', '').lower()
 
-        # XPath pour trouver les bijoux par catégorie
         xpath_expr = f"//categorie/{categorie}/*[contains(translate(nom, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{keyword}') or contains(translate(description, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{keyword}')]"
         
         if not keyword:
@@ -82,25 +74,19 @@ def get_bijoux_par_categorie(categorie):
                 "prix": float(item.xpath("string(prix)") or '0'),
                 "description": item.xpath("string(description)").strip(),
             }
-
-            # Inclure l'élément image si présent dans l'XML
             image = item.xpath("string(image)").strip()
             if image:
                 bijou["image"] = f"/static/{image}"
-
             bijoux.append(bijou)
 
         sort_order = request.args.get('sort', 'asc')
         reverse = sort_order == 'desc'
         bijoux.sort(key=lambda x: x["prix"], reverse=reverse)
 
-        print("Bijoux triés, préparation XML...")
         xml_response = convert_bijoux_to_xml(bijoux)
-
         return Response(xml_response, mimetype='application/xml')
 
     except Exception as e:
-        print("❌ ERREUR :", e)
         return Response(f"<message>Erreur serveur : {e}</message>", status=500, mimetype='application/xml')
 
 @bijoux_bp.route('/xml', methods=['GET'])
@@ -118,14 +104,11 @@ def get_bijou_par_nom(nom):
     if root is None:
         return Response("<message>Données XML introuvables</message>", status=500, mimetype='application/xml')
 
-    # Traitement de la recherche par nom
     keyword = request.args.get('search', '').lower()
     sort_order = request.args.get('sort', 'asc')
 
-    # Appliquer le filtre de recherche sur le nom du bijou
     bijou_el = root.xpath(f"//*[self::bague or self::boucle_oreille][translate(nom, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate('{nom}', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]")
     
-    # Si un mot-clé de recherche est spécifié, appliquer un filtrage supplémentaire
     if keyword:
         bijou_el = [bijou for bijou in bijou_el if keyword in bijou.xpath("string(nom)").lower() or keyword in bijou.xpath("string(description)").lower()]
 
@@ -139,13 +122,10 @@ def get_bijou_par_nom(nom):
         "image": bijou_el[0].xpath("string(image)").strip()
     }
 
-    # Tri selon le prix, si nécessaire
     if sort_order == 'desc':
-        bijou['prix'] = -bijou['prix']  # Inverser le prix pour trier en desc
+        bijou['prix'] = -bijou['prix']
 
-    # Convertir en XML
     xml_response = convert_bijoux_to_xml([bijou])
-
     root_bijoux = etree.fromstring(xml_response)
     xslt_pi = etree.ProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="bijou.xslt"')
     root_bijoux.addprevious(xslt_pi)
@@ -154,4 +134,3 @@ def get_bijou_par_nom(nom):
     xml_str = etree.tostring(tree, xml_declaration=True, encoding='UTF-8', pretty_print=True)
 
     return Response(xml_str, mimetype='application/xml')
-

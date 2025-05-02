@@ -11,30 +11,32 @@
         <style>
           body {
             font-family: Arial, sans-serif;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
           }
           .container {
             display: flex;
             gap: 20px;
             align-items: flex-start;
+            
           }
           .image {
             flex: 1;
           }
           .details {
             flex: 2;
-            color: #000000;
+            color:rgb(70, 66, 66);
           }
           .price {
             font-size: 24px;
             font-weight: bold;
             margin-top: 10px;
-            color: #000000;
+            color: #A87F5C;
           }
          
           .btn-buy {
             margin-top: 30px;
             padding: 10px;
-            background-color: #9E6F6F;
+            background-color: #9E6F6F ;
             color: white;
             text-align: center;
             font-size: 1em;
@@ -70,13 +72,16 @@
           </div>
 
           <div class="details">
-            <h1 style="font-weight: bold; font-size: 1.5em; margin-top: 20px;"><xsl:value-of select="bijou/nom"/></h1>
+            <h1 style="font-weight: bold; font-family: 'Libre_Bodoni'; font-size: 2.2em; margin-top: 20px; color: #A87F5C;">
+              <xsl:value-of select="bijou/nom"/>
+            </h1>
+            <p className="mb-8" style="font-size: 1.2em;">
+              <xsl:value-of select="bijou/description"/>
+            </p>
             <div class="price">
               <xsl:value-of select="bijou/prix"/> DA
             </div>
-
-            <h3 style="font-weight: bold; font-size: 1.5em; margin-top: 20px;">Détails du produit :</h3>
-            <p className="mb-8"><xsl:value-of select="bijou/description"/></p>
+            
 
             <button id="buyButton" class="btn-buy">Acheter maintenant</button>
           </div>

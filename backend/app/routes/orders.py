@@ -1,4 +1,4 @@
-from flask import Blueprint, Response , request 
+from flask import Blueprint, Response, request
 from ..utils.xml_utils import get_xml_from_db, convert_bijoux_to_xml
 from ..utils.db_utils import get_db_connection
 from lxml import etree
@@ -38,7 +38,6 @@ def ajouter_order():
                 return Response(f"<message>Champ {field} manquant</message>", status=400, mimetype='application/xml')
             data[field] = value
 
-    # Champ optionnel
     note = xml_input.findtext('note')
     if note:
         data['note'] = note
@@ -46,13 +45,11 @@ def ajouter_order():
     if date_value:
         data['date'] = date_value
 
-    # Maintenant séparer nom et prénom
     try:
-        nom, prenom = data['nom_prenom'].split(' ', 1)  # Sépare en 2 parties
+        nom, prenom = data['nom_prenom'].split(' ', 1)
     except ValueError:
         return Response("<message>Le champ nom_prenom doit contenir nom et prénom séparés par un espace</message>", status=400, mimetype='application/xml')
 
-    # Ensuite traitement XML base de données
     root = get_xml_from_db()
     if root is None:
         return Response("<message>Données XML introuvables</message>", status=500, mimetype='application/xml')

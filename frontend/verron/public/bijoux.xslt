@@ -55,7 +55,7 @@
           }
           .card-price {
             font-size: 1.1em;
-            color: #9E6F6F;
+            color: #A87F5C;
             margin: 10px 0;
           }
           .card-description {

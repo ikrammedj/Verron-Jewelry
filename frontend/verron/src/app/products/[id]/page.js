@@ -61,8 +61,7 @@ export default function ProductPage() {
       });
     }
 };
-
-  
+ 
   const updatePrixFinal = (productPrice, qty, livraison, typeDelivery) => {
     const livraisonPrice = typeDelivery === "domicile" 
       ? livraison.prixLivraisonDomicile 
@@ -70,6 +69,9 @@ export default function ProductPage() {
     
     setPrixFinal(productPrice * qty + (livraisonPrice || 0));
   };
+  useEffect(() => {
+    updatePrixFinal(prix, quantity, prixLivraison, formData.typeLivraison);
+  }, [prix, quantity, prixLivraison, formData.typeLivraison]);
   
   const validateForm = () => {
     const newErrors = {};
@@ -120,7 +122,7 @@ export default function ProductPage() {
       const response = await fetch('http://127.0.0.1:5000/orders/', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/xml', // Important!
+          'Content-Type': 'application/xml',
         },
         body: xmlData,
       });
@@ -276,7 +278,6 @@ export default function ProductPage() {
               <div className="bg-white p-6 rounded-lg sm:w-10/12 md:w-10/12 w-5/6 h-auto max-h-[90vh] flex flex-col relative overflow-y-auto">
                 <h2 className="text-2xl font-bold mb-4 text-black">Informations de livraison</h2>
                 <form onSubmit={handleFormSubmit} className="flex-grow overflow-y-auto">
-                  {/* Nom */}
                   <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700">Nom et Prénom</label>
                     <input
@@ -289,8 +290,6 @@ export default function ProductPage() {
                     />
                     {errors.nom && <p className="text-red-500 text-sm mt-1">{errors.nom}</p>}
                   </div>
-
-                  {/* Téléphone */}
                   <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700">Téléphone</label>
                     <input

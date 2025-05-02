@@ -4,7 +4,7 @@ import StickyNavbar from "../Components/StickyNavbar";
 import Sidebar from "../Components/Sidebar";
 import Footer2 from "../Components/Footer2";
 import SearchBarWithFilter from "../Components/SearchBar";
-import AnimatedSection from "../Components/AnimatedSection"; // Assure-toi du chemin
+import AnimatedSection from "../Components/AnimatedSection"; 
 
 export default function BijouxCatalogueHTML() {
   const [bijoux, setBijoux] = useState([]);
@@ -85,7 +85,6 @@ export default function BijouxCatalogueHTML() {
       <StickyNavbar />
       <Sidebar onSearchClick={() => setShowSearchBar(!showSearchBar)} /> 
 
-      {/* Animation sur le titre */}
       <AnimatedSection delay={0.1}>
         <div className="bg-[#F7F1EB] px-20 pt-20">
           <h1 className="text-left text-[#9E6F6F] mb-10 text-4xl font-bolder font-['Libre_Bodoni']">

@@ -80,11 +80,9 @@ export default function SearchBarWithFilter({ setBijoux, showSearchBar }) {
           </div>
         </div>
       )}
-
-      {/* Align filters and sort options on the same line */}
-      <div className="w-full max-w-lg space-y-4">
+      <div className="w-full max-w-lg space-y-4 mx-auto flex flex-col items-center">
         <div className="flex items-center justify-start gap-3 mb-4">
-          {/* Category filters */}
+     
           {categories.map((category) => (
             <button
               key={category}
@@ -102,7 +100,6 @@ export default function SearchBarWithFilter({ setBijoux, showSearchBar }) {
             </button>
           ))}
 
-          {/* Sort button */}
           <div className="relative">
             <button
               onClick={() => setShowSortOptions(!showSortOptions)}

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import Link from 'next/link'; // Garde uniquement l'import nécessaire
+import Link from 'next/link'; 
 
 const Accueil = () => {
   return (
