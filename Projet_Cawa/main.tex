@@ -31,6 +31,8 @@
         \includegraphics[width=\linewidth]{FS.png}
     \end{tabular}
 \end{center}
+
+
     \vspace{4cm}
 
   \begin{center}
@@ -58,11 +60,11 @@
     \vfill
 \end{titlepage}
 
-\section*{Présentation Générale}
+\subsection*{Présentation Générale}
 \addcontentsline{toc}{section}{Présentation Générale}
 Ce projet web est une boutique en ligne de bijoux (bagues et boucles d’oreilles) mettant en avant l’usage de XML comme format central de données. L'application permet de naviguer, rechercher, filtrer et commander des bijoux
 
-\section*{Architecture du Projet}
+\subsection*{Architecture du Projet}
 \subsubsection*{Modélisation des Données (XML + XSD)}
 \begin{itemize}[label=-]
     \item Le fichier \texttt{bijoux.xml} contient une liste de bijoux structuré (catégories : bagues, boucles d’oreilles), et des commandes.
@@ -80,7 +82,7 @@ Ce projet web est une boutique en ligne de bijoux (bagues et boucles d’oreille
     \item La transformation XSLT se fait côté client via JavaScript, à l’aide de \texttt{XSLTProcessor}.
 \end{itemize}
 
-\section*{Backend – API REST (Python + Flask)}
+\subsection*{Backend – API REST (Python + Flask)}
 L’API expose les endpoints suivants :
 \begin{itemize}[label=-]
     \item \texttt{GET /bijoux}:retourne la liste complète des bijoux au format XML, avec possibilité de filtrer par mot-clé (search) et de trier les résultats (sort) via des paramètres optionnels.
@@ -107,10 +109,11 @@ Une interface dynamique permet de :
      \item \textbf{Tailwind CSS} pour le stylage rapide et réactif du front-end.
      \item \textbf{Mise en cache} des requêtes XML pour améliorer les performances.
 \end{itemize}
-\section*{ Lien vers la vidéo explicative et le code source}
+\subsection*{ Lien vers la vidéo explicative et le code source}
 \begin{itemize}[label= ]
     \item\href{https://drive.google.com/file/d/1js70yp9zMGgbiwFzuWCpGEhvx22dAf4N/view?usp=share_link}{\uline{Lien vers la vidéo}}
-    \item \href{https://github.com/ikrammedj/Verron-Jewelry}{\uline{Lien vers le code}}  
+    \item \href{https://github.com/ikrammedj/Verron-Jewelry}{\uline{Lien vers le code}}
+    
 \end{itemize}
-
+\textbf{Note :} L'explication audio a été réalisée à l'aide d'une intelligence artificielle, en raison de la non-disponibilité d’un microphone de bonne qualité.
 \end{document}
